@@ -1,4 +1,4 @@
-# Creating Objects
+User# Creating Objects
 
 ## Objectives
 + Create a constructor function
@@ -8,34 +8,32 @@
 
 ## Introduction
 
-So far we have mainly examined primitive data types like strings and integers.  As you have seen, it sometimes becomes convenient to represent data with objects, which gives us key value pairs. For example, we may represent a puppy as the following:
+So far we have mainly examined primitive data types like strings and integers.  As you have seen, it sometimes becomes convenient to represent data with objects, which gives us key value pairs. For example, we may represent a user as the following:
 
 ```javascript
-  let puppy = {name: 'fido', age: 2, color: 'brown'}
+  let bobby = {name: 'bobby', age: 20, hometown: 'Philadelphia'}
 
   // our JavaScript object
 ````
 
-Now imagine that we had a couple of puppies:
+Now imagine that we had a couple of users:
 
 ```js
-let fido = {
-  name: 'fido',
-  age: 2,
-  color: 'brown',
-  size: 'large'
+let bobby = {
+  name: 'bobby',
+  age: 20,
+  hometown: 'Philadelphia'
 }
 
-let pluto = {
-  name: 'pluto',
-  age: 3,
-  color: 'yellow',
-  size: 'medium'
+let susan = {
+  name: 'susan',
+  age: 28,
+  hometown: 'Boston'
 }
 
 ```
 
-Great. Two nice puppies.
+Great. Two nice users.
 
 Note, that with a both objects sharing exactly the same keys, and only the values differing, we are *[repeating ourselves](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)*.  We would like a mechanism to construct objects with the same attributes (that is, keys), while assigning different values to those keys.   
 
@@ -46,30 +44,30 @@ Instead of typing out each attribute separately with the literal syntax, we can 
 Let's write a constructor function that returns a Javascript object without any attributes:
 
 ```js
-function Puppy() {
+function User() {
 
 }
 
-Puppy()
+User()
 // undefined
 
 
-new Puppy
+new User
 // {}
 ```
 
-Let's unpack the code above.  First, we declare a function called `Puppy`.  We capitalize the name of the function simply as a convention, to indicate that we will be using this function differently.  This function is just a plain old JavaScript function.  We demonstrate that by calling `Puppy()` and seeing that it returns undefined, just like any other blank JavaScript function would.  
+Let's unpack the code above.  First, we declare a function called `User`.  We capitalize the name of the function simply as a convention, to indicate that we will be using this function differently.  This function is just a plain old JavaScript function.  We demonstrate that by calling `User()` and seeing that it returns undefined, just like any other blank JavaScript function would.  
 
 However, when we call this function with the `new` keyword, things change.  First, JavaScript creates a new object, `{}`.  Second, the newly created object is automatically returned from the function.  Note that this occurs even though there is no explicit returns inside of the function.  Not exactly how we remember functions operating.  
 
 Now, as promised, we want our constructor function to provide a mechanism for standardizing the attributes we assign to the object.  We can do this by defining our constructor function with some arguments.
 
 ```js
-function Puppy(name, age, color, size) {
+function User(name, age, hometown) {
 
 }
 
-let snoopy = new Puppy('snoopy', 3, 'white', 'medium')
+let bobby = new User('bobby', 20, 'Philadelphia')
 // {}
 ```
 
@@ -78,14 +76,14 @@ So mission accomplished, sort of.  We see that we can define our constructor fun
 To have this object being returned with specific attributes we need to know a couple other things about constructor functions. First, is that when we call a function with the `new` keyword the body of the constructor function is run.  Let's see that:
 
 ```js
-function Puppy(name, age, color, size) {
+function User(name, age, hometown) {
   console.log(name)
   console.log(age)
 }
 
-let snoopy = new Puppy('snoopy', 3, 'white', 'medium')
-// snoopy
-// 3
+let bobby = new User('bobby', 20, 'Philadelphia')
+// bobby
+// 20
 // {}
 ```
 
@@ -94,11 +92,11 @@ So the name and age is logged, just like our function instructs.  This helps us,
 Now the only thing we need is a way to access the newly created object, and then assign that newly created objects attributes corresponding to the values passed through.  How do we access that newly created object?  With the `this` keyword.
 
 ```js
-function Puppy(name, age, color, size) {
+function User(name, age, hometown) {
   console.log(this)
 }
 
-let snoopy = new Puppy('snoopy', 3, 'white', 'medium')
+let bobby = new User('bobby', 20, 'Philadelphia')
 // {}
 // {}
 ```
@@ -108,15 +106,14 @@ We'll explore `this` in more detail in a later lesson, but for now know that `th
 Our final step is to modify that object by assigning it some attributes accordingly.   
 
 ```js
-function Puppy(name, age, color, size) {
+function User(name, age, hometown) {
   this.name = name
   this.age = age
-  this.color = color
-  this.size = size
+  this.hometown = hometown
 }
 
-let snoopy = new Puppy('snoopy', 3, 'white', 'medium')
-// {name: 'snoopy', age: 3, color: 'white', size: 'medium'}
+let bobby = new User('bobby', 20, 'Philadelphia')
+// {name: 'bobby', age: 20, hometown: 'Philadelphia'}
 ```
 So you can see that we modified our constructor function such that when it is called, it creates the new JavaScript object.  We refer to that JavaScript object from inside of our function with the `this` keyword.  We then assign that new JavaScript object attributes with values that we receive from the arguments passed through.
 
@@ -125,40 +122,39 @@ So you can see that we modified our constructor function such that when it is ca
 The objects that we return operate just like the JavaScript objects you have seen before.  You can read from the object with either the dot or bracket syntax.  
 
 ```js
-snoopy["age"];
-// 3
-snoopy.age
-// 3
+bobby["age"];
+// 20
+bobby.age
+// 20
 ```
 
 And we can modify the objects by assigning new values with dot or bracket syntax:
 
 ```js
-snoopy["age"] = 4;
+bobby["age"] = 4;
 
-snoopy
-// {name: 'snoopy', age: 4, color: 'white', size: 'medium'}
+bobby
+// {name: 'bobby', age: 4, hometown: 'Philadelphia'}
 
-snoopy.age = 5
+bobby.age = 5
 
-// {name: 'snoopy', age: 5, color: 'white', size: 'medium'}
+// {name: 'bobby', age: 5, hometown: 'Philadelphia'}
 ```
 
 And of course we can create as many objects we want with our constructor function.
 
 ```js
-function Puppy(name, age, color, size) {
+function User(name, age, hometown) {
   this.name = name
   this.age = age
-  this.color = color
-  this.size = size
+  this.hometown = hometown
 }
 
-let snoopy = new Puppy('snoopy', 3, 'white', 'medium')
-// {name: 'snoopy', age: 3, color: 'white', size: 'medium'}
+let bobby = new User('bobby', 20, 'Philadelphia')
+// {name: 'bobby', age: 20, hometown: 'Philadelphia'}
 
-let fidoDido = new Puppy('fidoDido', 4, 'brown', 'large')
-// {name: 'fidoDido', age: 4, color: 'brown', size: 'large'}
+let fidoDido = new User('sally', 28, 'Boston')
+// {name: 'sally', age: 28, hometown: 'Boston'}
 ```
 
 ## Summary
