@@ -8,32 +8,13 @@
 
 ## Introduction
 
-So far we have mainly examined primitive data types like strings and integers.  Sometimes it becomes convenient like to represent data in terms of key value pairs. For example, we may define a puppy's attributes as the following:
-
-```text
-  name -> fido
-  age  -> 2
-  color -> brown
-```
-
-JavaScript allows us to associate *keys* with their *values*, through use of an object.
+So far we have mainly examined primitive data types like strings and integers.  As you have seen, it sometimes becomes convenient to represent data with objects, which gives us key value pairs. For example, we may represent a puppy as the following:
 
 ```javascript
   let puppy = {name: 'fido', age: 2, color: 'brown'}
 
   // our JavaScript object
 ````
-
-We can construct objects in JavaScript using the literal constructor: `{}` and giving it some properties. Once we have constructed a JavaScript object note that we can add new attributes to the object through the dot syntax.
-
-  ```javascript
-    let puppy = {name: 'fido', age: 2, color: 'brown'}
-
-    puppy.size = 'large'
-    // adding a new attribute size with a value of 'large'
-    puppy
-    // {name: 'fido', age: 2, color: 'brown', size: 'large'}
-  ````
 
 Now imagine that we had a couple of puppies:
 
@@ -122,7 +103,9 @@ let snoopy = new Puppy('snoopy', 3, 'white', 'medium')
 // {}
 ```
 
-So now we see the same new object logged twice, thus proving that we have access to that object from inside of our constructor function.  Our final step is to modify that object by assigning it some attributes accordingly.   
+We'll explore `this` in more detail in a later lesson, but for now know that `this` references the object that receives the method call.  It allows us to reference the object receiving the method from inside a method call.  Here, when we call a function with the `new` keyword, the object receiving the method call is the newly created object.  And so when you see the new object logged twice, the first time is from the `console.log(this)` code, and the second time is because the constructor function returns the newly created object.  So now that we understand that this references the object receiving the method call, or with a constructor function, the newly created object, let's move onto the final step.  
+
+Our final step is to modify that object by assigning it some attributes accordingly.   
 
 ```js
 function Puppy(name, age, color, size) {
