@@ -156,6 +156,9 @@ function Puppy(name, age, color, size) {
 
 let snoopy = new Puppy('snoopy', 3, 'white', 'medium')
 // {name: 'snoopy', age: 3, color: 'white', size: 'medium'}
+
+let fidoDido = new Puppy('fidoDido', 4, 'brown', 'large')
+// {name: 'fidoDido', age: 4, color: 'brown', size: 'large'}
 ```
 
 ## Summary
