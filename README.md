@@ -71,7 +71,7 @@ let bobby = new User('bobby', 20, 'Philadelphia')
 // {}
 ```
 
-So mission accomplished, sort of.  We see that we can define our constructor function to take in four arguments, and name those arguments appropriately.  However, when we execute the function we are not doing anything with the data that we are passing in, and therefore we are still returning the same blank object.  
+So mission accomplished, sort of.  We see that we can define our constructor function to take in three arguments, and name those arguments appropriately.  However, when we execute the function we are not doing anything with the data that we are passing in, and therefore we are still returning the same blank object.  
 
 To have this object being returned with specific attributes we need to know a couple other things about constructor functions. First, is that when we call a function with the `new` keyword the body of the constructor function is run.  Let's see that:
 
