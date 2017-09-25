@@ -1,4 +1,4 @@
-User# Creating Objects
+# Creating Objects
 
 ## Objectives
 + Create a constructor function
