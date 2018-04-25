@@ -162,3 +162,4 @@ let fidoDido = new User('sally', 28, 'Boston')
 We've reviewed working with objects in JavaScript, and started to think about *object-orientated programming* by applying the *constructor function* pattern when creating objects so that we can easily define and reuse objects that we design.
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/js-create-objects-readme'>Creating Objects in JS</a> on Learn.co and start learning to code for free.</p>
+<p data-visibility='hidden'>PHRG Creating Objects</p>
